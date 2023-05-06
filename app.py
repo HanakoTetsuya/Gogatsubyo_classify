@@ -35,7 +35,7 @@ model.fit(X_train, y_train)
 if rad=="Gogatsubyo":
     st.header("Know If You Are Affected By Gogatsubyo")
     st.write("Fill or copy & paste your feeling in SNS")
-    raw_text=st.text_area("Text Here")"
+    raw_text=st.text_area("Text Here")
     raw_text=tfidf.transform([raw_text]).toarray()
     
     prediction=model.predict(raw_text)[0]
