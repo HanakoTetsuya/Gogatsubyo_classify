@@ -30,8 +30,8 @@ raw_text=st.text_input("Text Here")
 raw_text=tfidf.transform([raw_text]).toarray()
 prediction=model.predict(raw_text)[0]
 
-if st.button("Predict"):
+st.button("Predict"):
     if prediction==1:
         st.warning("You Might Be Affected By Gogatsubyo")
-        elif prediction2==0:
-            st.success("You Are Safe")
+    else:
+        st.success("You Are Safe")
