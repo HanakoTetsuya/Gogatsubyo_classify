@@ -25,7 +25,7 @@ model.fit(X_train, y_train)
 
 #heading over to the Gogatsubyo section
 st.header("Know If You Are Affected By Gogatsubyo")
-st.write("Fill or copy & paste your feeling in SNS")
+st.write("Fill or copy & paste your feeling written in SNS in English")
 raw_text=st.text_input("Text Here")
 raw_text=tfidf.transform([raw_text]).toarray()
 prediction=model.predict(raw_text)[0]
