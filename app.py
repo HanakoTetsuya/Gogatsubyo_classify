@@ -9,14 +9,6 @@ from sklearn.ensemble import RandomForestClassifier
 
 import streamlit as st
 
-rad=st.sidebar.radio("Navigation Menu",["Gogatubyo"])
-
-#displays all the available disease prediction options in the web app
-if rad=="Home":
-    st.title("Mental Disorder Predictions App")
-    st.text("The Following Disease Predictions Are Available ->")
-    st.text("1. Gogatsubyo")
-
 data = pd.read_csv('dataset.csv')
 data=data.dropna(how='any')
 
@@ -32,16 +24,14 @@ model = RandomForestClassifier(n_estimators= 300)
 model.fit(X_train, y_train)
 
 #heading over to the Gogatsubyo section
-if rad=="Gogatsubyo":
-    st.header("Know If You Are Affected By Gogatsubyo")
-    st.write("Fill or copy & paste your feeling in SNS")
-    raw_text=st.text_input("Text Here")
-    raw_text=tfidf.transform([raw_text]).toarray()
-    
-    prediction=model.predict(raw_text)[0]
-    
-    if st.button("Predict"):
-        if prediction==1:
-            st.warning("You Might Be Affected By Gogatsubyo")
+st.header("Know If You Are Affected By Gogatsubyo")
+st.write("Fill or copy & paste your feeling in SNS")
+raw_text=st.text_input("Text Here")
+raw_text=tfidf.transform([raw_text]).toarray()
+prediction=model.predict(raw_text)[0]
+
+if st.button("Predict"):
+    if prediction==1:
+        st.warning("You Might Be Affected By Gogatsubyo")
         elif prediction2==0:
             st.success("You Are Safe")
